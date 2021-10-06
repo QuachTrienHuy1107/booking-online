@@ -162,7 +162,7 @@ const Login: React.FC = () => {
                     </Form.Item>
                 </Col>
 
-                <Col span={24} style={{ textAlign: "center" }} className="login--social">
+                {/* <Col span={24} style={{ textAlign: "center" }} className="login--social">
                     <Space size="large">
                         <Button
                             shape="circle"
@@ -176,7 +176,7 @@ const Login: React.FC = () => {
                             onClick={() => handleLoginWithSocial()}
                         />
                     </Space>
-                </Col>
+                </Col> */}
 
                 <Col span={24}>
                     <Form.Item style={{ textAlign: "center" }}>

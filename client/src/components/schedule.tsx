@@ -34,7 +34,9 @@ interface ISchedule {
 const Schedule: React.FC<ISchedule> = ({ cinema }): any => {
     const history = useHistory();
     const { today, dateTomorrow } = useGetDate();
-    const { arrayDate } = useBookingTicketWithDate(today, dateTomorrow);
+    const { arrayDate } = useBookingTicketWithDate("07-10-2021", "10-10-2021");
+
+    console.log("today", today);
 
     return (
         <div className="schedule">

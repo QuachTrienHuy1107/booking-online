@@ -145,7 +145,6 @@ const refreshToken = async (req, res) => {
  */
 const forgotPassword = async (req, res) => {
     const { email } = req.body;
-    console.log(email);
 
     if (!email) return res.status(404).json({ success: false, message: "Email is required!!" });
     try {
@@ -157,14 +156,28 @@ const forgotPassword = async (req, res) => {
         //Generate token for authorizing user is valid
         const token = jwt.sign({ userId: user._id, email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "20m" });
         const html = `
-        <h2>Please click the link to reset your password</h2>
-        <p>https://mern-booking-online.herokuapp.com/api/auth/reset-password/${token}</p>
-    `;
+        <h2>Click this to reset your password</h2>
+        <a
+            href='https://mern-booking-online.herokuapp.com/reset-password/${token}'
+            style="
+                color: #fff;
+                font-size: 18px;
+                border-radius: 20px;
+                border: 10px solid #01b4e4;
+                background-color: #01b4e4;
+                padding: 0 10px;
+                text-transform: uppercase;
+                text-decoration: none;
+                font-weight: 700;
+                font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+            "
+            >RESET MY PASSWORD</a>
+        `;
 
         const { error } = await sendMail(email, html);
         if (error) {
             console.log(error);
-            
+
             return res.status(404).json({ success: false, message: "Sending email failed" });
         }
 

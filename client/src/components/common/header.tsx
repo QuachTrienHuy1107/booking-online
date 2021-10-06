@@ -89,12 +89,8 @@ const Header: React.FC = () => {
                             )}
                         </div>
                         <div className="header__right__location">
-                            <i className="fa fa-map-marker-alt"></i>
-                            <Dropdown overlay={menu} trigger={["click"]}>
-                                <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-                                    VIETNAM <DownOutlined />
-                                </a>
-                            </Dropdown>
+                            <i className="fa fa-map-marker-alt" style={{ marginRight: 10 }}></i>
+                            <span>VIET NAM</span>
                         </div>
                     </div>
                 </div>

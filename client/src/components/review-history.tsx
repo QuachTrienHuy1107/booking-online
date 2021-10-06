@@ -59,6 +59,7 @@ const ReviewHistory: React.FC = memo(() => {
             dataIndex: "content",
             key: "content",
             width: "40%",
+            render: (text: string) => <span style={{ wordBreak: "break-all" }}>{text}</span>,
         },
     ];
 

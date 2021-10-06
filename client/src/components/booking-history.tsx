@@ -43,12 +43,8 @@ const BookingHistory: React.FC<IBookingHistory> = memo(({ bookingHistory }) => {
             width: "40%",
             render: (tickets: TicketType[]) =>
                 tickets
-                    .filter((item: TicketType) => {
-                        return !!item.status;
-                    })
-                    .map((ticket: TicketType) => {
-                        return ticket.seat_number;
-                    })
+                    .filter((item: TicketType) => !!item.status)
+                    .map((ticket: TicketType) => ticket.seat_number)
                     .join(" , "),
         },
     ];

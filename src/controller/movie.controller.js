@@ -154,6 +154,7 @@ const getMovieDetail = async (req, res) => {
 const booking = async (req, res) => {
     const { showtimeId, arrayTickets } = req.body;
     const userId = req.user?.userId;
+    const email = req.user?.email;
     try {
         //tickets is array include ticketId, userId
         const showtime = await Showtime.findById(showtimeId);
@@ -173,7 +174,7 @@ const booking = async (req, res) => {
 
         await User.findOneAndUpdate({ _id: userId }, { $addToSet: { showtimes: showtimeId } }, { new: true });
 
-        return res.status(200).json({ success: true, message: "Create booking successfully", showtime });
+        return res.status(200).json({ success: true, message: "Booking successfully", showtime });
     } catch (error) {
         console.log(error.message);
         res.status(500).json({ success: false, message: "Internal server error" });

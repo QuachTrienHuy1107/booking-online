@@ -11,10 +11,12 @@ async function sendMail(email, html) {
             user: process.env.USER_EMAIL, // generated ethereal user
             pass: process.env.PASSWORD_EMAIL, // generated ethereal password
         },
+        maxConnections: 5,
+        maxMessages: 10,
     });
 
     const data = {
-        form: process.env.USER_EMAIL,
+        form: "MERN-BOOKING-ONLINE",
         to: email,
         subject: "Reset password",
         html,
