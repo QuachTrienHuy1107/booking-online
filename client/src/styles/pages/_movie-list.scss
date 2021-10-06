@@ -1,0 +1,49 @@
+@import "../main";
+
+.movielist {
+    width: 100%;
+    margin: 50px auto;
+    // max-width: 992px;
+    min-height: 500px;
+
+    .filter {
+        background-color: $white;
+        box-shadow: $nearly-white 0px 1px 5px 0px;
+        margin-bottom: toRem(12);
+
+        &__text {
+            &--title {
+                font-size: toRem(16);
+            }
+
+            &--genre {
+                color: $nearly-red;
+                font-size: toRem(14);
+            }
+        }
+
+        &__btn {
+            &--clear {
+                width: 50%;
+                text-align: center;
+                display: block;
+                color: $nearly-red;
+                border-color: $nearly-red;
+            }
+
+            &--picked {
+                background-color: $nearly-red;
+                span {
+                    color: $nearly-white;
+                }
+            }
+        }
+    }
+
+    .pagination {
+        text-align: center;
+        display: block;
+        margin: 30px 0 30px;
+        padding-right: 0;
+    }
+}

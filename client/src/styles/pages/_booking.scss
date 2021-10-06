@@ -1,0 +1,85 @@
+@import "../main";
+
+.booking {
+    .top-title {
+        background-color: $dark-blue;
+        color: $white;
+        overflow: hidden;
+        padding-bottom: toRem(15);
+        padding-top: toRem(30);
+        max-height: toRem(165);
+        .title {
+            color: $white;
+            font-size: toRem(48);
+            margin-bottom: toRem(20);
+        }
+
+        //OVERRIDE
+        .ant-skeleton-title {
+            margin-top: 0 !important;
+        }
+
+        .detail {
+            margin-bottom: 3px;
+            &__item {
+                display: inline-block;
+
+                &--rating {
+                    span {
+                        font-size: toRem(20);
+                        font-weight: 600;
+                        margin-right: toRem(5);
+                    }
+                }
+                &--genres {
+                    span {
+                        font-size: toRem(14);
+                        color: $xxlight-grey;
+                        background: 0 0;
+                        padding: 2px 8px;
+                        border-radius: 11px;
+                        border: 1px solid $xxlight-grey;
+                        margin: 0 0 0 toRem(7);
+                    }
+                }
+
+                &--release {
+                    span {
+                        font-size: toRem(12);
+                        color: $white;
+                        background: 0 0;
+                        padding: 2px 8px;
+                        border-radius: 11px;
+                        margin-left: 5px;
+                        text-transform: uppercase;
+                        display: inline-block;
+                    }
+                }
+
+                &--time {
+                    margin: 0 toRem(10);
+                    span {
+                        font-size: toRem(12);
+                        color: $white;
+                        background: 0 0;
+                        padding: 2px 5px;
+                        border-radius: 11px;
+                        text-transform: uppercase;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+
+    &__text {
+        &--voter {
+            font-size: toRem(11);
+            padding-left: toRem(5);
+        }
+    }
+
+    .main {
+        background-color: $white;
+    }
+}

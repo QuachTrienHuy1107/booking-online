@@ -1,0 +1,40 @@
+@import "../main";
+
+.movie-rec {
+    position: relative;
+
+    &--detail {
+        .slick {
+            &-prev,
+            &-next {
+                &::before {
+                    // color: $black !important;
+                    font-size: toRem(30);
+                }
+            }
+
+            &-prev {
+                transform: translateX(toRem(-25px)) !important;
+            }
+        }
+    }
+
+    // .slick {
+    //     &-prev {
+
+    //     }
+    // }
+
+    .slick-slide {
+        padding-right: toRem(10);
+        // width: toRem(222) !important;
+    }
+
+    .slick-active {
+        > div {
+            .movies__item:last-child {
+                padding-right: 0 !important;
+            }
+        }
+    }
+}

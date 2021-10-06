@@ -1,0 +1,25 @@
+@import "../main";
+
+.heading-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // border-top: 1px solid $nearly-white;
+
+    padding: toRem(32) toRem(0) toRem(16) 0;
+
+    h1 {
+        color: $black;
+        font-size: toRem(24);
+        font-weight: bold;
+        line-height: 1.17;
+    }
+
+    a {
+        font-size: toRem(18);
+        display: inline-block;
+        font-weight: 600;
+        line-height: 1.33;
+        color: $nearly-red;
+    }
+}

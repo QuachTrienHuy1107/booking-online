@@ -1,0 +1,7 @@
+@import "../main";
+//OVERRIDE ANTD
+.ant-dropdown-link {
+    &:hover {
+        color: $nearly-grey;
+    }
+}

@@ -1,0 +1,12 @@
+@import "../main";
+
+.userinfo {
+    display: flex;
+    align-items: center;
+
+    &__name {
+        font-size: toRem(16);
+        color: $nearly-black;
+        margin-left: toRem(10);
+    }
+}

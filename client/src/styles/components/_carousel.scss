@@ -1,0 +1,9 @@
+@import "../main";
+
+.carousel {
+    overflow: hidden;
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}

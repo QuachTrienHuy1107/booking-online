@@ -1,0 +1,70 @@
+@import "../main";
+
+.review-list {
+    .ant-spin-spinning {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+}
+
+.review {
+    width: 100%;
+    margin: 16px 0px 0px;
+    background-color: $white;
+    max-width: unset;
+    scroll-snap-align: start;
+    box-shadow: $nearly-white 0px 1px 5px 0px;
+    border: 1px solid $nearly-white;
+    padding: toRem(24);
+    min-width: toRem(450);
+    position: relative;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__item {
+        // margin: toRem(20) 0 0;
+
+        &--detail {
+            margin: toRem(20) 0 toRem(10);
+        }
+
+        &__info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &--left {
+                > span {
+                    font-size: toRem(14);
+                    color: $nearly-black;
+                    margin-left: toRem(-10);
+                    margin-right: toRem(20);
+                }
+
+                button {
+                    border: none;
+                    transform: translateX(toRem(-10));
+                }
+            }
+
+            &--right {
+                span {
+                    color: $xlight-grey;
+                }
+            }
+        }
+    }
+}

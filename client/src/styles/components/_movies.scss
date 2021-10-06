@@ -1,0 +1,40 @@
+@import "../main";
+
+.movies {
+    // max-width: toRem(1200);
+
+    &__item {
+        padding-right: toRem(25);
+    }
+
+    @media screen and (max-width: 1290px) {
+        width: 100%;
+    }
+    .ant-pagination {
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .ant-tabs-nav-wrap {
+        justify-content: center;
+    }
+
+    .slick-active {
+        > div {
+            .movies__item:last-child {
+                // padding-right: 0 !important;
+            }
+        }
+    }
+
+    .ant-tabs-tab-btn {
+        font-size: 1.2rem;
+        color: #000;
+    }
+
+    .ant-tabs-tab.ant-tabs-tab-active {
+        .ant-tabs-tab-btn {
+            color: #fb4226 !important;
+        }
+    }
+}

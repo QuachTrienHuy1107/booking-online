@@ -1,0 +1,25 @@
+[2021-09-02 01:00:45] [[31merror[39m] z is not defined
+[2021-09-02 02:24:13] [[31merror[39m] Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+[2021-09-02 02:24:35] [[31merror[39m] Mongoose 5.x disallows passing a spread of operators to `Model.aggregate()`. Instead of `Model.aggregate({ $match }, { $skip })`, do `Model.aggregate([{ $match }, { $skip }])`
+[2021-09-02 03:10:09] [[31merror[39m] user.showtime is not iterable
+[2021-09-06 02:13:53] [[31merror[39m] $lookup with 'pipeline' may not specify 'localField' or 'foreignField'
+[2021-09-27 23:23:57] [[31merror[39m] Cast to ObjectId failed for value "me" (type string) at path "_id" for model "user"
+[2021-09-27 23:24:14] [[31merror[39m] Cast to ObjectId failed for value "me" (type string) at path "_id" for model "user"
+[2021-09-27 23:24:27] [[31merror[39m] Cast to ObjectId failed for value "me" (type string) at path "_id" for model "user"
+[2021-09-27 23:24:39] [[31merror[39m] Cast to ObjectId failed for value "me" (type string) at path "_id" for model "user"
+[2021-09-27 23:25:37] [[31merror[39m] Cast to ObjectId failed for value "me" (type string) at path "_id" for model "user"
+[2021-09-27 23:26:09] [[31merror[39m] Cast to ObjectId failed for value "me" (type string) at path "_id" for model "user"
+[2021-09-27 23:27:09] [[31merror[39m] Cast to ObjectId failed for value "1" (type string) at path "_id" for model "user"
+[2021-09-27 23:28:39] [[31merror[39m] Cast to ObjectId failed for value "me" (type string) at path "_id" for model "user"
+[2021-10-02 22:43:04] [[31merror[39m] Cannot read properties of undefined (reading 'originalname')
+[2021-10-02 22:43:33] [[31merror[39m] Cannot read properties of undefined (reading 'path')
+[2021-10-02 22:44:17] [[31merror[39m] Cannot read properties of undefined (reading 'path')
+[2021-10-03 02:27:37] [[31merror[39m] userUpdated is not defined
+[2021-10-04 00:57:14] [[31merror[39m] Illegal arguments: undefined, string
+[2021-10-04 00:58:09] [[31merror[39m] Illegal arguments: undefined, string
+[2021-10-04 00:59:05] [[31merror[39m] Illegal arguments: undefined, string
+[2021-10-04 01:00:07] [[31merror[39m] oldPassword is not defined
+[2021-10-04 01:00:29] [[31merror[39m] phone is not defined
+[2021-10-04 01:02:29] [[31merror[39m] Illegal arguments: undefined, string
+[2021-10-04 01:03:49] [[31merror[39m] string is not defined
+[2021-10-04 01:04:13] [[31merror[39m] Illegal arguments: undefined, string

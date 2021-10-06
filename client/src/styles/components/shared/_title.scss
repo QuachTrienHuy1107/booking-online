@@ -1,0 +1,12 @@
+@import "../../main";
+
+.title {
+    text-align: left;
+    font-family: Roboto;
+    font-size: toRem(24);
+    font-weight: bold;
+    line-height: 1.17;
+    color: $nearly-black;
+    text-transform: capitalize;
+    margin: toRem(20) 0;
+}

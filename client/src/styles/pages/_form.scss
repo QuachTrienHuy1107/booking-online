@@ -1,0 +1,73 @@
+@import "../main";
+
+.form {
+    background-color: $nearly-white;
+    &__title {
+        font-size: toRem(32);
+        cursor: pointer;
+    }
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        height: 100%;
+
+        &--title {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        &--content {
+            background-color: $white;
+            border-radius: 5px;
+            box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 24%);
+            width: toRem(400);
+            max-width: toRem(640);
+            padding: toRem(30) toRem(45) toRem(50);
+        }
+    }
+
+    .login,
+    .register {
+        &__checkbox {
+            .ant-form-item-control-input-content {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        &__btn {
+            @include Button;
+
+            &--loginLocal,
+            &--registerLocal {
+                margin: toRem(20) 0 toRem(10);
+                width: 100%;
+                height: toRem(50);
+                font-size: toRem(20);
+            }
+
+            &--loginSocial {
+            }
+        }
+
+        &--social {
+            text-align: center;
+            margin-bottom: toRem(24);
+        }
+    }
+}
+#components-form-demo-normal-login .login-form {
+    max-width: toRem(300);
+}
+#components-form-demo-normal-login .login-form-forgot {
+    float: right;
+}
+#components-form-demo-normal-login .ant-col-rtl .login-form-forgot {
+    float: left;
+}
+#components-form-demo-normal-login .login-form-button {
+    width: 100%;
+}

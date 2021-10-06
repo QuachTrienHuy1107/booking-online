@@ -1,0 +1,265 @@
+@import "../main";
+
+.poster {
+    position: relative;
+    color: $white;
+    margin-bottom: toRem(50);
+    border-bottom: 1px solid #000;
+    background-position: right -200px top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-height: toRem(650);
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(
+            to right,
+            rgba(10.59%, 10.98%, 9.8%, 1) 150px,
+            rgba(10.59%, 10.98%, 9.8%, 0.84) 100%
+        );
+    }
+
+    &__wrapper {
+        padding: toRem(30);
+        max-width: toRem(1256);
+        margin: 0 auto;
+    }
+
+    &__text {
+        color: $white;
+        letter-spacing: 1px;
+
+        &--title {
+            font-size: toRem(48);
+            margin-bottom: toRem(15);
+            font-weight: 600;
+        }
+
+        &--genres {
+            margin-right: toRem(10);
+            font-size: toRem(14);
+            margin-left: toRem(7);
+        }
+
+        &--runtime {
+            font-size: toRem(14);
+            &::before {
+                content: "";
+                width: toRem(7);
+                height: toRem(7);
+                background-color: $white;
+                border-radius: 50%;
+                display: inline-block;
+                margin: 0 toRem(3);
+            }
+        }
+
+        &--heading {
+            font-size: toRem(18);
+            font-weight: 700;
+        }
+
+        &--desc {
+            font-size: toRem(14);
+            text-overflow: ellipsis;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+
+    &__item {
+        margin-bottom: toRem(10);
+
+        &--booking {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &-available {
+                padding: toRem(20) toRem(50);
+                border-radius: 5px;
+                background-color: $nearly-red;
+                border: none;
+                color: $white;
+                &:hover {
+                    background-color: $nearly-red;
+                    color: $white;
+                }
+            }
+            &-commingsoon {
+                padding: toRem(20) toRem(50);
+                border-radius: 5px;
+            }
+        }
+
+        &__icon {
+            // transform: translate(toRem(0), toRem(-0));
+        }
+    }
+
+    &__detail {
+        padding: toRem(40) 0 toRem(20);
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: toRem(550);
+        img {
+            width: 100%;
+            height: auto;
+            max-height: toRem(550);
+        }
+    }
+
+    &__action {
+        display: inline-block;
+        margin-right: toRem(20);
+
+        &--score {
+            padding: toRem(5);
+            display: inline-block;
+            border-radius: 50%;
+            background-color: $dark-blue;
+            margin-right: 20px;
+
+            .ant-progress-text {
+                width: toRem(50);
+                background-color: $dark-blue;
+                font-weight: 800;
+                color: $white;
+            }
+        }
+
+        &__btn {
+            width: toRem(35);
+            height: toRem(35);
+            border-radius: 50%;
+            background-color: $dark-blue;
+            border: none;
+        }
+    }
+
+    // &__title {
+    //     padding-top: toRem(30);
+    //     position: relative;
+
+    //     &__genre {
+    //         color: $white;
+    //         margin: toRem(10) 0;
+    //         display: inline-block;
+    //     }
+    // }
+
+    // &__action {
+    //     padding-left: 0;
+    //     margin: 20px 0;
+
+    //     &__list {
+    //         display: inline-block;
+    //         margin-right: 20px;
+
+    //         button {
+    //             width: 35px;
+    //             height: 35px;
+    //             border-radius: 50%;
+    //             background-color: #032541;
+    //             border: none;
+    //         }
+    //     }
+
+    //     &--rating {
+    //         position: relative;
+    //         width: 150px;
+    //         &-star {
+    //             position: absolute;
+    //             display: flex !important;
+    //             opacity: 0;
+    //             visibility: hidden;
+    //             transition: all 0.5s ease-out;
+    //             transform: translateX(-37%);
+    //         }
+
+    //         &:hover &-star {
+    //             opacity: 1;
+    //             visibility: visible;
+    //         }
+    //     }
+
+    //     &--score {
+    //         padding: toRem(5);
+    //         display: inline-block;
+    //         border-radius: 50%;
+    //         background-color: $dark-blue;
+    //         margin-right: 20px;
+
+    //         .ant-progress-text {
+    //             width: toRem(50);
+    //             background-color: $dark-blue;
+    //             font-weight: 800;
+    //             color: $white;
+    //         }
+    //     }
+    // }
+
+    // &__view {
+    //     display: flex;
+    //     justify-content: flex-end;
+    //     align-items: center;
+    // }
+
+    // &__booking {
+    //     button {
+    //         padding: toRem(20) toRem(50);
+    //         border-radius: 5px;
+    //         background-color: $nearly-red;
+    //         border: none;
+    //         color: $white;
+    //         &:hover {
+    //             background-color: $nearly-red;
+    //             color: $white;
+    //         }
+    //     }
+    // }
+
+    //OVERRIDE
+    .ant-progress-inner {
+        width: toRem(80) !important;
+        height: toRem(80) !important;
+    }
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+    font-size: 32px;
+    fill: #fff;
+}
+
+.rating__info {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span.anticon.anticon-star {
+        margin-left: 5px;
+    }
+
+    span.anticon.anticon-comment {
+        margin-left: 5px;
+    }
+}
+
+form.commentList__form.commentList__form--active {
+    padding-right: 35px;
+}

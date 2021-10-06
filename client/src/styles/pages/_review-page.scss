@@ -1,0 +1,117 @@
+@import "../main";
+
+.reviews {
+    width: 90%;
+    margin: 50px auto;
+    &__title {
+        text-align: center;
+        color: $grey;
+
+        h1 {
+            padding-left: 4px;
+            font-size: toRem(42);
+        }
+        p {
+            font-size: toRem(22);
+            color: $grey;
+            margin-top: toRem(10);
+        }
+    }
+
+    &__rating {
+        margin: 12px 0px 0px;
+        background-color: $nearly-white-blue;
+        border-radius: 8px;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 12px 24px;
+        display: flex;
+
+        &--content {
+            h1 {
+                color: $grey;
+                font-size: toRem(18);
+                font-weight: 600;
+                line-height: 1.33;
+            }
+
+            p {
+                color: $grey;
+                padding-top: 2px;
+                font-size: toRem(16);
+                font-weight: normal;
+                line-height: 1.5;
+            }
+        }
+
+        &__btn {
+            cursor: pointer;
+
+            border-radius: 2px;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            display: flex;
+            margin-left: 4px;
+            padding: 20px 12px;
+
+            span {
+                font-size: toRem(18);
+                font-weight: 600;
+                line-height: 1.33;
+            }
+
+            &--rating {
+                border: 1px solid $nearly-red;
+                color: $nearly-red;
+                background-color: $nearly-white-blue;
+                &:hover,
+                &:active,
+                &:focus {
+                    color: $nearly-red;
+                    background-color: $nearly-white-blue !important;
+                    border: 1px solid $nearly-red;
+                }
+            }
+
+            &--submit {
+                margin-left: auto;
+                width: 100%;
+                margin-bottom: 0 !important;
+                background-color: $nearly-red !important;
+                color: $nearly-white-blue;
+                border: 1px solid $nearly-red;
+
+                &:hover,
+                &:active,
+                :focus {
+                    color: $nearly-white-blue;
+                    background-color: $nearly-red;
+                    border: 1px solid $nearly-red;
+                }
+            }
+        }
+    }
+
+    &__subtext {
+        color: $grey;
+        padding-top: 2px;
+        font-size: toRem(16);
+        font-weight: normal;
+        line-height: 1.5;
+    }
+    &__maintext {
+        color: $grey;
+        font-size: toRem(18);
+        font-weight: 600;
+        line-height: 1.33;
+
+        &--title {
+            margin: toRem(20) 0;
+            padding-left: toRem(24);
+        }
+    }
+}

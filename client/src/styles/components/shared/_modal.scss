@@ -1,0 +1,20 @@
+@import "../../main";
+
+.modal-custom {
+    .ant-modal-body {
+        position: relative;
+        padding: 0;
+
+        > iframe {
+            position: absolute;
+            width: 700px;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .ant-modal-footer {
+        padding: 0;
+    }
+}

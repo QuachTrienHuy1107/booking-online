@@ -1,0 +1,23 @@
+@import "../main";
+
+.home {
+    &__section {
+        margin: 30px 0;
+    }
+    &__fence {
+        background-image: url("../../assets/images/back-news.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        padding-top: 120px;
+    }
+
+    .premier {
+        background-color: $nearly-blue;
+        color: $white;
+        padding: toRem(10) 0 toRem(34);
+
+        h1:first-child {
+            color: $white;
+        }
+    }
+}

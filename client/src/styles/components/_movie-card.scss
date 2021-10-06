@@ -1,0 +1,80 @@
+@import "../main";
+
+.movie {
+    border: none !important;
+    transition: all 0.5s;
+
+    &__poster {
+        position: relative;
+        transition: all 0.5s;
+
+        border-top-left-radius: toRem(15);
+        border-top-right-radius: toRem(15);
+
+        &--img {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-top-left-radius: toRem(15) !important;
+            border-top-right-radius: toRem(15) !important;
+            // width: toRem(222);
+            height: toRem(375);
+            display: block;
+            object-fit: cover;
+
+            position: relative;
+            transition: all 0.5s ease 0s;
+        }
+    }
+
+    &__content {
+        text-overflow: ellipsis;
+
+        &--title {
+            font-size: toRem(18);
+            line-height: 1.33;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        &--genres {
+            font-size: toRem(16);
+            line-height: 1.33;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: $nearly-grey;
+        }
+    }
+
+    .ant-card {
+        margin-bottom: toRem(40);
+    }
+
+    .ant-card-body {
+        padding: toRem(16) 0;
+    }
+
+    .ant-card-bordered {
+        border: none;
+        box-shadow: none;
+        background: none;
+    }
+}
+
+.movie-recommend {
+    background-color: transparent;
+
+    .ant-card-body {
+        background-color: $nearly-blue;
+    }
+
+    .movie__content {
+        color: $white;
+    }
+}

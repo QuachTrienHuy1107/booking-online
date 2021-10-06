@@ -1,0 +1,177 @@
+@import "../main";
+
+.checkout {
+    background-color: $nearly-white-blue;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    .page-header {
+        background-color: $grey;
+        margin-bottom: toRem(30);
+        span {
+            color: $white !important;
+        }
+    }
+
+    &__leftPanel {
+        margin-top: toRem(30);
+        display: flex;
+        justify-content: center;
+        margin-bottom: toRem(33);
+    }
+
+    .seat {
+        &__btn {
+            width: toRem(30);
+            height: toRem(30);
+            margin: 0px 10px 10px 0;
+            padding: 0;
+            display: inline-block;
+            font-size: toRem(10);
+            line-height: 25px;
+            font-weight: 400;
+            background: #fff;
+            vertical-align: top;
+            text-align: center;
+
+            &--vip {
+                background-color: $yellow;
+                color: $black;
+            }
+
+            &--sold {
+                background: $nearly-white !important;
+                cursor: not-allowed;
+                color: $white !important;
+            }
+
+            &--selected {
+                color: $white;
+                background-color: $green !important;
+                border-color: $green;
+            }
+        }
+
+        &__model {
+            width: toRem(15);
+            height: toRem(15);
+
+            &--sold {
+                background: $nearly-white;
+                border-radius: 3px;
+            }
+            &--vip {
+                background: $yellow;
+                border-radius: 3px;
+            }
+            &--available {
+                background: $white;
+                border-radius: 3px;
+                border: 1px solid $green;
+            }
+            &--selected {
+                background: $green;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .payment {
+        background-color: $white;
+        min-height: 500px;
+        padding: toRem(24);
+        position: relative;
+
+        &__title {
+            position: relative;
+            font-size: toRem(20);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-align: left;
+            color: $red;
+        }
+
+        &__text {
+            &--email {
+                font-size: toRem(13);
+            }
+        }
+
+        &__info {
+            h1 {
+                font-size: toRem(18);
+                margin-bottom: toRem(10);
+            }
+
+            p {
+                font-size: toRem(14);
+                margin-bottom: 0;
+                line-height: toRem(20);
+            }
+        }
+
+        &__item {
+            margin: toRem(10) 0;
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                font-size: toRem(14);
+            }
+
+            &--food {
+                padding-left: 0;
+
+                .ant-collapse-header {
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                }
+            }
+
+            &__price {
+                color: $red;
+                font-size: toRem(14);
+            }
+        }
+
+        .circle-left {
+            position: absolute;
+            top: 50%;
+            z-index: 1;
+            width: toRem(22);
+            height: toRem(22);
+            background: $nearly-white-blue;
+            border-radius: 50%;
+            left: toRem(-10);
+        }
+        .circle-right {
+            position: absolute;
+            top: 50%;
+            z-index: 1;
+            width: toRem(22);
+            height: toRem(22);
+            background: $nearly-white-blue;
+            border-radius: 50%;
+            right: toRem(-10);
+        }
+    }
+
+    &__btn {
+        background-color: $nearly-red;
+        color: $white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: toRem(50);
+        font-size: toRem(20);
+
+        &:hover,
+        &:focus {
+            background-color: $red;
+            color: $white;
+        }
+    }
+}

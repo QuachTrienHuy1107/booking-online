@@ -1,0 +1,93 @@
+@mixin BgImg($urlImg) {
+    background-image: url($urlImg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: $nearly-white;
+}
+
+@mixin Button($padding: 10px 49px, $borderRadius: 25px) {
+    display: block;
+    border-radius: toRem(300) !important;
+    background-color: $nearly-white !important;
+    color: $nearly-black !important;
+    text-align: center;
+
+    &:hover {
+        box-shadow: 0px 10px 15px 0px rgba(59, 55, 188, 0.5);
+        background-color: $nearly-white !important;
+        color: $nearly-black !important;
+    }
+}
+
+@mixin Banner($bgImg: "../../assets/img/banner07.jpg") {
+    @include BgImg($bgImg);
+    background-size: 100% 100%;
+    width: auto;
+    height: 500px;
+    background-color: #000;
+    position: relative;
+    background-position: center center;
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: linear-gradient(180deg, rgba(19, 23, 32, 0.5) 0%, #131720 100%);
+        &:hover {
+            box-shadow: 5px 10px linear-gradient(169deg, #5560ff 17%, #aa52a1 63%, #ff4343 100%);
+        }
+    }
+}
+
+@mixin ScrollBar($horizon: true) {
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar {
+        width: 3px !important;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #eeebeb;
+        background-clip: content-box;
+        border-radius: 20px;
+        border: 7px solid transparent;
+        /* @if $horizon {
+            border: 7px solid transparent;
+        } */
+    }
+}
+
+@mixin TextEllipsis($line: 1) {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@mixin Title {
+    color: $primaryColor;
+    font-size: $heading4;
+    font-weight: $semi-bold;
+}
+
+@mixin Input {
+    background-color: transparent !important;
+    // border-bottom: 1px solid #000;
+    border: none !important;
+    outline: none;
+
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}
+
+@function toRem($value) {
+    @return ($value / 16) + rem;
+}
