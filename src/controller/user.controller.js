@@ -21,7 +21,6 @@ const getUserDetail = async (req, res) => {
 };
 
 const me = async (req, res) => {
-    // console.log("ss", res.send("oik"));
     res.send({ user: req.user || "123", content: "ok" });
 };
 

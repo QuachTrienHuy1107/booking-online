@@ -41,7 +41,6 @@ app.use("/api", router);
 
 //connectDB
 connectDB();
-console.log("__dirname", __dirname);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
