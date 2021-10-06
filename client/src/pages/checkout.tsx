@@ -33,7 +33,7 @@ const Checkout: React.FC = () => {
 
     React.useEffect(() => {
         if (!!isSuccess && !isFirst.current) {
-            Swal.fire("Booking successfully!!", "", "success").then(() => {
+            Swal.fire("Booking successfully!!", "You can check this in your profile", "success").then(() => {
                 history.replace(ROUTES.HOME);
             });
         }
@@ -110,7 +110,7 @@ const Checkout: React.FC = () => {
                                     <Col md={3} style={{ textAlign: "center" }}>
                                         <Space align="center">
                                             <div className="seat__model seat__model--vip"></div>
-                                            <span>Sold</span>
+                                            <span>Vip</span>
                                         </Space>
                                     </Col>
                                     <Col md={3} style={{ textAlign: "center" }}>
