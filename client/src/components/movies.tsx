@@ -68,8 +68,8 @@ export const Movies: React.FC = () => {
     return (
         <div className="movies">
             <Row>
-                {!!isLoading && moviePagination.movies.length === 0 && <Loading />}
                 <Col>
+                    {!!isLoading && moviePagination.movies.length === 0 && <Loading />}
                     <div style={{ paddingRight: 25 }}>
                         <TitleNavigation title="Now Showing" linkTo={ROUTES.MOVIELIST} subTitle="See all" />
                     </div>

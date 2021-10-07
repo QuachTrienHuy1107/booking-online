@@ -16,11 +16,11 @@ const { TabPane } = Tabs;
 
 const tabExtra = (
     <div className="schedule__info">
-        {/* <span className="schedule__attr">
+        <span className="schedule__attr">
             <span className="schedule__icon schedule__icon--available"></span>
             <span className="schedule__text schedule__text--attr">AVAILABLE</span>
         </span>
-        <span className="schedule__attr">
+        {/* <span className="schedule__attr">
             <span className="schedule__icon schedule__icon--filling"></span>
             <span className="schedule__text schedule__text--attr">AVAILABLE</span>
         </span> */}
@@ -86,8 +86,13 @@ const Schedule: React.FC<ISchedule> = ({ cinema }): any => {
                                                     <Col md={8}>
                                                         <Space size={[8, 16]} wrap>
                                                             {listCinemaAvailable.map((showtime: ShowtimeResponse) => {
+                                                                const isCurrentTime = !!moment(showtime.time)
+                                                                    .startOf("hour")
+                                                                    .fromNow()
+                                                                    .includes("ago");
                                                                 return (
                                                                     <Button
+                                                                        disabled={!!isCurrentTime}
                                                                         key={showtime._id}
                                                                         className="schedule__detail__time"
                                                                         onClick={() =>

@@ -116,13 +116,13 @@ const Checkout: React.FC = () => {
                                     <Col md={3} style={{ textAlign: "center" }}>
                                         <Space align="center">
                                             <div className="seat__model seat__model--available"></div>
-                                            <span>Sold</span>
+                                            <span>Available</span>
                                         </Space>
                                     </Col>
                                     <Col md={3} style={{ textAlign: "center" }}>
                                         <Space align="center">
                                             <div className="seat__model seat__model--selected"></div>
-                                            <span>Sold</span>
+                                            <span>Selected</span>
                                         </Space>
                                     </Col>
                                 </Row>

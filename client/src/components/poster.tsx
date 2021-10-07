@@ -43,7 +43,9 @@ const Poster: React.FC<IMovieDetail> = memo(({ movieDetail }) => {
                                         <li className="poster__action poster__action--score">
                                             <Progress
                                                 type="circle"
-                                                percent={!!movieDetail.imdb?.rating ? movieDetail.imdb?.rating : 80}
+                                                percent={
+                                                    !!movieDetail.imdb?.rating ? movieDetail.imdb?.rating * 10 : 80
+                                                }
                                             />
                                         </li>
                                         <li className="poster__action">
