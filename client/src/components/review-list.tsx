@@ -5,7 +5,9 @@ import moment from "moment";
 import React, { memo } from "react";
 import { useInView } from "react-intersection-observer";
 import reviewApi from "service/review.service";
-import { ReviewRepsonse } from "types/review.type";
+import { likeReview } from "store/features/review.slice";
+import { useAppDispatch, useAppSelector } from "store/store";
+import { LikeReviewPayload, ReviewRepsonse } from "types/review.type";
 import "../styles/components/_review-list.scss";
 import UserInfo from "./common/info";
 import { Loading } from "./common/loading";
@@ -13,11 +15,11 @@ import Rater from "./common/rating";
 import Timer from "./common/timer";
 
 interface IReviewList {
-    _id?: string;
     reviews: ReviewRepsonse[];
     handlePageChange: (page: number) => void;
     total: number;
     isLoading: boolean;
+    likeLoading?: boolean;
 }
 
 const options = {
@@ -26,11 +28,25 @@ const options = {
     threshold: 1.0,
 };
 
-const ReviewList: React.FC<IReviewList> = memo(({ handlePageChange, reviews, total, isLoading }) => {
+let userId = "" as any;
+
+const ReviewList: React.FC<IReviewList> = memo(({ handlePageChange, reviews, total, isLoading, likeLoading }) => {
+    const dispatch = useAppDispatch();
     const observer = React.useRef(null) as any;
     const [currentPage, setCurrentPage] = React.useState(1);
     const isHasMore = reviews.length < total ? true : false;
     const isFirst = React.useRef(true);
+    const { credential } = useAppSelector((state) => state.authSlice);
+
+    console.log("reviews.length", reviews);
+
+    React.useEffect(() => {
+        userId = credential._id || null;
+    }, [credential._id]);
+
+    React.useEffect(() => {
+        handlePageChange(currentPage);
+    }, [currentPage]);
 
     const lastReview = React.useCallback(
         (rv: any) => {
@@ -46,9 +62,9 @@ const ReviewList: React.FC<IReviewList> = memo(({ handlePageChange, reviews, tot
         [isHasMore]
     );
 
-    React.useEffect(() => {
-        handlePageChange(currentPage);
-    }, [currentPage]);
+    const handleLike = (_id: string) => {
+        dispatch(likeReview(_id));
+    };
 
     return (
         <>
@@ -60,6 +76,8 @@ const ReviewList: React.FC<IReviewList> = memo(({ handlePageChange, reviews, tot
             <div className={`review-list ${isLoading && "pending"}`}>
                 {reviews?.map((review: ReviewRepsonse, index: number) => {
                     const isLast = reviews.length === index + 1 ? true : false;
+                    const isLike = Boolean(review.likes?.findIndex((item: any) => item.userId === userId));
+
                     return (
                         <>
                             <div className="review" ref={isLast ? lastReview : null}>
@@ -80,17 +98,18 @@ const ReviewList: React.FC<IReviewList> = memo(({ handlePageChange, reviews, tot
                                     </div>
                                     <div className="review__item review__item__controls">
                                         <div className="review__item__controls--left">
-                                            <Button icon={<LikeOutlined />} shape="circle" />
+                                            <Button
+                                                style={{ cursor: !!likeLoading ? "wait" : "pointer" }}
+                                                disabled={!!likeLoading}
+                                                className={!isLike ? `review__item__controls--left--like` : ""}
+                                                icon={<LikeOutlined />}
+                                                shape="circle"
+                                                onClick={() => handleLike(review._id ? review._id : "")}
+                                            />
 
-                                            <span>123 </span>
-                                            <Button icon={<DislikeOutlined />} shape="circle" />
+                                            <span>{review.likes?.length}</span>
                                         </div>
-                                        {/* <Timer time={moment(review.createdAt, "YYYYMMDD").startOf("hour").fromNow()} /> */}
-                                        <Timer
-                                            time={`${moment(review.createdAt).format("DD-MM-YYYY")} / ${moment(
-                                                review.createdAt
-                                            ).format("hh:MM A")}`}
-                                        />
+                                        <Timer time={moment(review.createdAt).startOf("millisecond").fromNow()} />
                                     </div>
                                 </div>
                             </div>

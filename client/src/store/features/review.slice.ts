@@ -22,7 +22,6 @@ const reviewSlice = createSlice({
             state.error = null;
             if (!action.payload.isLoadmore) {
                 state.reviews = { reviewList: [], total: 0 };
-                // state.isLoadMore = false;
             }
         },
         getReviewByMovieSuccess: (state, action: PayloadAction<ReviewPaginationResponse>) => {
@@ -46,6 +45,7 @@ const reviewSlice = createSlice({
         addNewReview: (state, action: PayloadAction<AdditionalReviewPayload>) => {
             state.isLoading = true;
             state.error = null;
+
         },
         addNewReviewSuccess: (state, action: PayloadAction<ReviewRepsonse>) => {
             state.reviews.reviewList.unshift(action.payload);
@@ -55,6 +55,26 @@ const reviewSlice = createSlice({
         addNewReviewFailure: (state, action: PayloadAction<Error>) => {
             state.error = action.payload;
             state.isLoading = false;
+        },
+
+        likeReview: (state, action: PayloadAction<string>) => {
+            state.error = null;
+            state.likeLoading = true;
+        },
+        likeReviewSuccess: (state, action: PayloadAction<ReviewRepsonse>) => {
+            console.log(action.payload);
+            let newReviews: ReviewPaginationResponse = JSON.parse(JSON.stringify(state.reviews));
+            const index = newReviews.reviewList.findIndex((item: ReviewRepsonse) => item._id === action.payload._id);
+            if (index !== -1) {
+                newReviews.reviewList[index].likes = action.payload.likes;
+            }
+            state.reviews = newReviews;
+            state.likeLoading = false;
+        },
+        likeReviewFailure: (state, action: PayloadAction<Error>) => {
+            state.error = action.payload;
+            state.isLoading = false;
+            state.likeLoading = false;
         },
 
         resetReviews() {
@@ -72,6 +92,9 @@ export const {
     addNewReview,
     addNewReviewSuccess,
     addNewReviewFailure,
+    likeReview,
+    likeReviewSuccess,
+    likeReviewFailure,
     resetReviews,
 } = actions;
 

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { LikeSchema } = require("./like.model");
 
 const Schema = mongoose.Schema;
 
@@ -18,6 +19,9 @@ const ReviewSchema = new Schema(
             default: 100,
             max: 100,
             min: 10,
+        },
+        likes: {
+            type: [LikeSchema],
         },
     },
     {

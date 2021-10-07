@@ -18,7 +18,7 @@ const ReviewPage: React.FC = () => {
     const dispatch = useAppDispatch();
     const { credential, isLoading: loginLoading } = useAppSelector((state) => state.authSlice);
     const { resPagination, handlePageChange } = usePagination(1, 4);
-    const { reviews, isLoading, error } = useAppSelector((state) => state.reviewSlice);
+    const { reviews, isLoading, error, likeLoading } = useAppSelector((state) => state.reviewSlice);
     const [_reviewList, setReviewList] = React.useState<any[] | null>([] || null);
     const [isModalVisible, setIsModalVisible] = React.useState(false);
     const location = useLocation();
@@ -29,7 +29,7 @@ const ReviewPage: React.FC = () => {
     }, []);
 
     React.useEffect(() => {
-        if (!!error && !!isFirst.current) {
+        if (!!error && !!isFirst.current && String(error) === "Missing token") {
             message
                 .error({
                     content: "You need to login first!",
@@ -105,6 +105,7 @@ const ReviewPage: React.FC = () => {
                     total={reviews.total}
                     isLoading={isLoading}
                     handlePageChange={handlePageChange}
+                    likeLoading={likeLoading}
                 />
 
                 <Modal

@@ -27,6 +27,14 @@ const reviewApi = {
             .then((response) => ({ response }))
             .catch((error) => ({ error }));
     },
+
+    likeReview: (_id: string) => {
+        const url = `${API.LIKE_REVIEW}/${_id}`;
+        return axiosClient
+            .post(url)
+            .then((response) => ({ response }))
+            .catch((error) => ({ error }));
+    },
 };
 
 export default reviewApi;

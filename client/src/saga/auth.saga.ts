@@ -40,7 +40,7 @@ function* onLogin({ payload }: PayloadAction<LoginPayload>) {
 
         yield put(loginActionSuccess(response.data.user));
         localStorage.setItem("access_token", response.data.accessToken);
-        localStorage.setItem("refresh_token", response.data.refreshToken);
+        localStorage.setItem("isAuth", "true");
     } catch (error: any) {
         console.log("error", error.message);
         yield put(loginActionFailure(error.message));

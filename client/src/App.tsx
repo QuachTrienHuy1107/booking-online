@@ -9,7 +9,7 @@ import "./styles/pages/App.scss";
 import { ROUTES } from "./utils/constant";
 import { Loading } from "./components/common/loading";
 import { useAppDispatch, useAppSelector } from "store/store";
-import { getMe } from "store/features/auth.slice";
+import { getMe, logoutAction } from "store/features/auth.slice";
 
 function App() {
     const { Mobile, FullScreen } = useScreenType();
@@ -19,16 +19,25 @@ function App() {
     React.useEffect(() => {
         function checkUser() {
             const token = localStorage.getItem("access_token");
+
             if (!!token) {
                 dispatch(getMe());
             }
         }
 
         window.addEventListener("storage", checkUser);
+
         return () => {
             window.removeEventListener("storage", checkUser);
         };
-    }, [dispatch]);
+    }, [credential, dispatch]);
+
+    React.useEffect(() => {
+        const isAuth = localStorage.getItem("isAuth");
+        if (Boolean(isAuth)) {
+            dispatch(getMe());
+        }
+    }, []);
 
     return (
         <React.Suspense fallback={<Loading />}>

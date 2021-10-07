@@ -36,8 +36,6 @@ const Schedule: React.FC<ISchedule> = ({ cinema }): any => {
     const { today, dateTomorrow } = useGetDate();
     const { arrayDate } = useBookingTicketWithDate("07-10-2021", "10-10-2021");
 
-    console.log("today", today);
-
     return (
         <div className="schedule">
             <Tabs tabBarExtraContent={tabExtra}>

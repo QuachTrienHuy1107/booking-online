@@ -6,7 +6,7 @@ export interface ReviewRepsonse {
     user?: { username: string; email: string; avatar: string };
     content?: string;
     rating?: number;
-    like?: number;
+    likes?: any[];
 }
 
 export interface ReviewPaginationResponse {
@@ -15,6 +15,10 @@ export interface ReviewPaginationResponse {
 }
 
 export interface ReviewPayload extends PaginationRequestType {
+    _id: string;
+}
+
+export interface LikeReviewPayload {
     _id: string;
 }
 
@@ -28,6 +32,7 @@ export interface AdditionalReviewPayload {
 export interface ReviewState {
     reviews: ReviewPaginationResponse;
     isLoading: boolean;
+    likeLoading?: boolean;
     isLoadMore?: boolean;
     error?: Error | null;
 }

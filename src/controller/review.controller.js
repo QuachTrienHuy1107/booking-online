@@ -2,6 +2,7 @@ const Movie = require("../model/movie/movie.model");
 const mongoose = require("mongoose");
 const Paginate = require("../shared/helper/pagination");
 const Review = require("../model/review/review.model");
+const { Like } = require("../model/review/like.model");
 
 /**
  * @Desc Create a new local account.
@@ -17,7 +18,9 @@ const addNewReview = async (req, res) => {
         //Create new review for a movie
 
         const newReview = new Review({ movie: movieId, user: userId, content, rating });
-        const review = await newReview.save().then((t) => t.populate("user", "username email avatar").execPopulate());
+        const review = await newReview
+            .save()
+            .then((t) => t.populate("user", "username email avatar").populate("movie", "title -_id").execPopulate());
         res.status(200).send(review);
     } catch (error) {
         console.log(error);
@@ -62,4 +65,32 @@ const getReviewByUser = async (req, res) => {
     }
 };
 
-module.exports = { addNewReview, getReviewByMovie, getReviewByUser };
+const likeReview = async (req, res) => {
+    const userId = req.user?.userId;
+    const { id } = req.params;
+    try {
+        const review = await Review.findById(id);
+        if (!review) return res.status(404).json({ success: false, message: "Review not found" });
+        let check = -1;
+        for (let i = 0; i < review.likes.length; i++) {
+            if (review.likes[i].userId.equals(userId)) {
+                check = i;
+                await review.likes.splice(i, 1);
+                break;
+            }
+        }
+        if (check === -1) {
+            //Do not into for-loop
+            const newLike = new Like({ userId });
+            await review.likes.push(newLike);
+        }
+        await review.save();
+
+        return res.status(200).send(review);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+};
+
+module.exports = { addNewReview, getReviewByMovie, getReviewByUser, likeReview };

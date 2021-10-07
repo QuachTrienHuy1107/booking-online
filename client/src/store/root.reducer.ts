@@ -13,7 +13,8 @@ const authPersistConfig = {
 
 const rootReducer = combineReducers({
     movieSlice,
-    authSlice: persistReducer(authPersistConfig, authSlice),
+    // authSlice: persistReducer(authPersistConfig, authSlice),
+    authSlice,
     reviewSlice,
 });
 

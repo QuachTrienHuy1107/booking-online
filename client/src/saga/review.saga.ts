@@ -7,9 +7,12 @@ import {
     addNewReviewSuccess,
     getReviewByMovie,
     getReviewByMovieFailure,
-    getReviewByMovieSuccess
+    getReviewByMovieSuccess,
+    likeReview,
+    likeReviewFailure,
+    likeReviewSuccess,
 } from "store/features/review.slice";
-import { AdditionalReviewPayload, ReviewPayload } from "types/review.type";
+import { AdditionalReviewPayload, LikeReviewPayload, ReviewPayload } from "types/review.type";
 
 function* onGetReviewByMovie({ payload }: PayloadAction<ReviewPayload>) {
     try {
@@ -36,9 +39,23 @@ function* onAddReview({ payload }: PayloadAction<AdditionalReviewPayload>) {
     }
 }
 
+function* onLikeReview({ payload }: PayloadAction<string>) {
+    try {
+        const { response, error } = yield call(reviewApi.likeReview, payload);
+        console.log("response", response);
+        if (error) throw new Error(error.message);
+
+        yield put(likeReviewSuccess(response.data));
+    } catch (error: any) {
+        console.log("error", error.message);
+        yield put(likeReviewFailure(error.message));
+    }
+}
+
 function* watchOnLyrics() {
     yield takeLatest(getReviewByMovie.type, onGetReviewByMovie);
     yield takeLatest(addNewReview.type, onAddReview);
+    yield takeLatest(likeReview.type, onLikeReview);
 }
 
 function* ReviewSaga() {

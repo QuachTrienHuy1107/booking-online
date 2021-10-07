@@ -126,7 +126,7 @@ const AppLayout = ({ component: Component, layout, restricted, ...rest }: Privat
                         <Component {...props} />
                     </FormTemplate>
                 )) ||
-                (Object.keys(credential).length === 0 && restricted === true && <Redirect to={ROUTES.LOGIN} />) ||
+                (!localStorage.getItem("isAuth") && restricted === true && <Redirect to={ROUTES.LOGIN} />) ||
                 (layout === "Home" && (
                     <HomeTemplate {...rest}>
                         <Component {...props} />

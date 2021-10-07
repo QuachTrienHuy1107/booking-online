@@ -7,7 +7,7 @@ import {
     ICredential,
     ResetPasswordPayload,
 } from "../../types/auth.type";
-import { persistor } from "store/store";
+// import { persistor } from "store/store";
 
 const initialState: AuthState = {
     credential: {},

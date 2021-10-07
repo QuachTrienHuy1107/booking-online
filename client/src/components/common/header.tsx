@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { logoutAction } from "store/features/auth.slice";
-import { persistor, useAppDispatch, useAppSelector } from "store/store";
+import { useAppDispatch, useAppSelector } from "store/store";
 import { ROUTES } from "utils/constant";
 import "../../styles/components/_header.scss";
 import { Loading } from "./loading";
@@ -23,7 +23,7 @@ const Header: React.FC = () => {
     const [value, setValue] = React.useState<any>(undefined);
 
     const handleLogout = () => {
-        persistor.purge();
+        // persistor.purge();
         dispatch(logoutAction());
         localStorage.clear();
     };

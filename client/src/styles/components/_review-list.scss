@@ -57,6 +57,16 @@
                 button {
                     border: none;
                     transform: translateX(toRem(-10));
+
+                    &:focus {
+                        color: $nearly-black;
+                        border-color: $white;
+                    }
+                }
+
+                &--like {
+                    color: #40a9ff;
+                    border-color: #40a9ff;
                 }
             }
 
