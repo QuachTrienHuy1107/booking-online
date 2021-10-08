@@ -329,7 +329,7 @@ const updateProfile = async (req, res) => {
         if (!!user) return res.status(200).json({ user, isSuccess: true });
     } catch (error) {
         logger.error(error.message);
-        res.status(500).json({ success: false, message: "Internal server error" });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
