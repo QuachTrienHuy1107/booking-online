@@ -333,8 +333,4 @@ const updateProfile = async (req, res) => {
     }
 };
 
-const logout = (req, res) => {
-    res.send("logou");
-};
-
-module.exports = { signup, login, refreshToken, forgotPassword, resetPassword, logout, getMe, updateProfile };
+module.exports = { signup, login, refreshToken, forgotPassword, resetPassword, getMe, updateProfile };

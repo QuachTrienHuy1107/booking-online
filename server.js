@@ -4,8 +4,6 @@ const path = require("path");
 const cors = require("cors");
 const connectDB = require("./src/config/db");
 const router = require("./src/router");
-const passport = require("passport");
-const configPassport = require("./src/config/passport");
 const session = require("express-session");
 
 const app = express();
@@ -25,11 +23,6 @@ app.use(
         maxAge: 1000 * 60 * 15,
     })
 );
-
-//Passport middlewares
-app.use(passport.initialize());
-app.use(passport.session());
-configPassport(passport);
 
 //router
 app.use("/api", router);

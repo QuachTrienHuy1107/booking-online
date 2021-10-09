@@ -1,5 +1,4 @@
 const express = require("express");
-const passport = require("passport");
 const authRoute = express.Router();
 const {
     signup,
@@ -7,7 +6,6 @@ const {
     forgotPassword,
     resetPassword,
     refreshToken,
-    logout,
     getMe,
     updateProfile,
 } = require("../controller/auth.controller");
@@ -62,59 +60,5 @@ authRoute.get("/me", verifyToken, getMe);
  * @access Public
  */
 authRoute.put("/me", verifyToken, uploadImage("file"), updateProfile);
-
-/**
- * @method GET
- * @route /api/auth/google
- * @access Public
- */
-
-authRoute.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
-
-// /**
-//  * @method GET
-//  * @route /api/auth/google/callback
-//  * @access Public
-//  */
-
-const LOGIN_SUCCESS_URL = "http://localhost:3000/login/success";
-
-authRoute.get(
-    "/google/callback",
-    passport.authenticate("google", {
-        successRedirect: LOGIN_SUCCESS_URL,
-        failureRedirect: "/api/auth/login/failure",
-    })
-);
-
-// /**
-//  * @method GET
-//  * @route /api/auth/login/success
-//  * @access Public
-//  */
-
-authRoute.get("/login/success", (req, res) => {
-    console.log("sessionID", req.user);
-    res.send("Thank for using my app");
-});
-
-// /**
-//  * @method GET
-//  * @route /api/auth/login/failure
-//  * @access Public
-//  */
-
-authRoute.get("/login/failure", (req, res) => {
-    console.log("not works");
-    res.send("fail");
-});
-
-// /**
-//  * @method POST
-//  * @route /api/auth/logout
-//  * @access Public
-//  */
-
-authRoute.post("/logout", logout);
 
 module.exports = authRoute;
