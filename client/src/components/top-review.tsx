@@ -124,7 +124,6 @@ const TopReview: React.FC<ITopReview> = memo(({ _id }) => {
                                                 />
 
                                                 <span>{review.likes?.length}</span>
-                                                {/* <Button icon={<DislikeOutlined />} shape="circle" /> */}
                                             </div>
                                             <div className="top-review__reviews__item__control--right">
                                                 <Timer

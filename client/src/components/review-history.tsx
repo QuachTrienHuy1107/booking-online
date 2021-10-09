@@ -15,7 +15,6 @@ const ReviewHistory: React.FC = memo(() => {
                 setLoading(true);
                 const { response, error }: any = await reviewApi.getReviewByUser();
                 if (!!error) throw new Error("INTERNAL SERVER");
-                console.log("response", response);
                 setReview((_prev: string[]) => [..._prev, ...response.data]);
             } catch (error: any) {
                 console.log("Error", error.message);
@@ -62,8 +61,6 @@ const ReviewHistory: React.FC = memo(() => {
             render: (text: string) => <span style={{ wordBreak: "break-all" }}>{text}</span>,
         },
     ];
-
-    console.log("reviews", reviews);
 
     return (
         <div>

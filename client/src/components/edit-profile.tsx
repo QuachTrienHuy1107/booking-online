@@ -39,19 +39,17 @@ const EditProfile: React.FC<IEditProfile> = ({ isOpen, onClose, me }) => {
                 });
     }, [isSuccess]);
 
-    const onFinish = (values: any) => {
+    const onFinish = async (values: any) => {
         isFirst.current = false;
-        const formData = new FormData();
         for (var key in values) {
             if ((values.hasOwnProperty(key) && !values[key]) || (values[key].trim() as string) === "") {
                 delete values[key];
             }
         }
-        const data = !!avatar ? { ...values, file: avatar } : values;
-        for (let key in data) {
-            formData.append(key, data[key]);
-        }
-        dispatch(updateProfile(formData));
+
+        const data = !!avatar ? { ...values, avatar } : values;
+
+        dispatch(updateProfile(data));
     };
 
     React.useEffect(() => {

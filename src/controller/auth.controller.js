@@ -258,9 +258,7 @@ const getMe = async (req, res) => {
 
 const updateProfile = async (req, res) => {
     try {
-        const { file } = req; //Get the file to request to server
-
-        const { username, email, phone, newPassword, oldPassword } = req.body;
+        const { username, email, phone, newPassword, oldPassword, avatar } = req.body;
         let imgUrl = null;
         let hashPassword = null;
 
@@ -289,20 +287,6 @@ const updateProfile = async (req, res) => {
             hashPassword = bcrypt.hashSync(newPassword, salt);
         }
 
-        if (!!file) {
-            console.log("updated");
-            cloudinary.config({
-                cloud_name: process.env.CLOUDINARY_NAME,
-                api_key: process.env.CLOUDINARY_API_KEY,
-                api_secret: process.env.CLOUDINARY_API_SECRET_KEY,
-            });
-
-            const uploadResponse = await cloudinary.uploader.upload(file.path, {
-                upload_preset: "dev_setups",
-            });
-            imgUrl = uploadResponse.url;
-        }
-
         const data = {
             ...userFound._doc,
             username,
@@ -311,7 +295,7 @@ const updateProfile = async (req, res) => {
             phone: phone || null,
             updatedAt: Date.now(),
             avatar:
-                imgUrl ||
+                avatar ||
                 userFound.avatar ||
                 "https://ddxcu89oqzgqh.cloudfront.net/uploads/account/avatar/5c92181f98f4500bb0003fbc/44884218_345707102882519_2446069589734326272_n.jpg",
         };

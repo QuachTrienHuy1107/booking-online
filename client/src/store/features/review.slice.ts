@@ -45,7 +45,6 @@ const reviewSlice = createSlice({
         addNewReview: (state, action: PayloadAction<AdditionalReviewPayload>) => {
             state.isLoading = true;
             state.error = null;
-
         },
         addNewReviewSuccess: (state, action: PayloadAction<ReviewRepsonse>) => {
             state.reviews.reviewList.unshift(action.payload);
@@ -62,7 +61,6 @@ const reviewSlice = createSlice({
             state.likeLoading = true;
         },
         likeReviewSuccess: (state, action: PayloadAction<ReviewRepsonse>) => {
-            console.log(action.payload);
             let newReviews: ReviewPaginationResponse = JSON.parse(JSON.stringify(state.reviews));
             const index = newReviews.reviewList.findIndex((item: ReviewRepsonse) => item._id === action.payload._id);
             if (index !== -1) {

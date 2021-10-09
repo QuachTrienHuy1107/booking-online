@@ -38,8 +38,6 @@ const ReviewList: React.FC<IReviewList> = memo(({ handlePageChange, reviews, tot
     const isFirst = React.useRef(true);
     const { credential } = useAppSelector((state) => state.authSlice);
 
-    console.log("reviews.length", reviews);
-
     React.useEffect(() => {
         userId = credential._id || null;
     }, [credential._id]);
