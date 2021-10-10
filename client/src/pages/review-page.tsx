@@ -16,13 +16,13 @@ import "../styles/pages/_review-page.scss";
 const ReviewPage: React.FC = () => {
     const { _id } = useParams<any>();
     const dispatch = useAppDispatch();
-    const { credential, isLoading: loginLoading } = useAppSelector((state) => state.authSlice);
+    const isFirst = React.useRef(false);
+    const [isModalVisible, setIsModalVisible] = React.useState(false);
+    const [_reviewList, setReviewList] = React.useState<any[] | null>([] || null);
+    const { credential } = useAppSelector((state) => state.authSlice);
     const { resPagination, handlePageChange } = usePagination(1, 4);
     const { reviews, isLoading, error, likeLoading } = useAppSelector((state) => state.reviewSlice);
-    const [_reviewList, setReviewList] = React.useState<any[] | null>([] || null);
-    const [isModalVisible, setIsModalVisible] = React.useState(false);
     const location = useLocation();
-    const isFirst = React.useRef(false);
 
     React.useEffect(() => {
         dispatch(resetReviews());
