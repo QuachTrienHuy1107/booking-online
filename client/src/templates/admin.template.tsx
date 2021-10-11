@@ -5,6 +5,6 @@ interface IAdmin {
 }
 
 const AdminTemplate: React.FC<IAdmin> = ({ children }) => {
-    return <div>123</div>;
+    return <div>Admin template</div>;
 };
 export default AdminTemplate;

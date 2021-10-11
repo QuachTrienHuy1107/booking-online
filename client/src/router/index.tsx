@@ -131,6 +131,11 @@ const AppLayout = ({ component: Component, layout, restricted, ...rest }: Privat
                     <HomeTemplate {...rest}>
                         <Component {...props} />
                     </HomeTemplate>
+                )) ||
+                (credential?.role === "Admin" && layout === "Admin" && (
+                    <AdminTemplate {...rest}>
+                        <Component {...props} />
+                    </AdminTemplate>
                 )) || <Component {...props} />
             }
         />
