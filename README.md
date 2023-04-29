@@ -41,10 +41,6 @@
 
 Go to `localhost:3000` to view the app.
 
-## Link demo
-
-[https://mern-booking-online.herokuapp.com/](https://mern-booking-online.herokuapp.com/)
-
 ## Have a nice day
 
 ![Thanks!](https://media4.giphy.com/media/vLpclx5lofmqnEswm0/200.gif)
